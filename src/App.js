@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React, { useState } from 'react'
+import Form from './components/Form';
+import Cita from './components/Cita';
+import Error from './components/Error';
+import ListadoCitas from './components/ListadoCitas';
 function App() {
+  const [error, setError] = useState(false)
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    !error ?
+      (
+        <div className="App">
+          <h1>ADMINISTRADOR DE PACIENTES</h1>
+            <div className="container">
+                  <Form/>
+                  <ListadoCitas/>
+            </div>
+        </div>
+      ) : (
+      <Error/>
+      )
   );
 }
 
