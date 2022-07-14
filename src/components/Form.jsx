@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import '../App.css';
 
-const Form = ({crearCita}) => {
+const Form = ({crearCita, incrementarId, idIncremental}) => {
+
+  const [id, setId] = useState(-1)
   const [citaForm, setCitaForm] = useState({
+    id: id,
     nombreMascota: "",
     nombreDueno: "",
     fecha: "",
@@ -10,6 +13,16 @@ const Form = ({crearCita}) => {
     sintomas: "",
     eliminada: false,
   })
+
+  function onClickFunction(){
+    setId(id+1)
+    const newId = id+1
+    console.log(id);
+    crearCita({
+      ...citaForm,
+      id: newId
+    })
+  }
 
   return (
     <div className="one-half column">
@@ -24,7 +37,7 @@ const Form = ({crearCita}) => {
         <input type="time" name="hora" value={citaForm.hora} onChange={e => setCitaForm({...citaForm, hora: e.currentTarget.value})} className="u-full-width" />
         <label>Sintomas</label>
         <textarea name="sintomas" value={citaForm.sintomas} onChange={e => setCitaForm({...citaForm, sintomas: e.currentTarget.value})} className="u-full-width text-area-sintoma"></textarea>
-        <button  className="u-full-width button-primary" onClick={() => crearCita(citaForm)}>Agregar Cita</button>
+        <button  className="u-full-width button-primary" onClick={() => onClickFunction()}>Agregar Cita</button>
     </div>
   )
 }

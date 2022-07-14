@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.css'
 
-const Cita = ({ cita }) => {
+const Cita = ({ cita, eliminarCita }) => {
   return (
     <div className="one-half">
         <div className="cita">
@@ -10,7 +10,7 @@ const Cita = ({ cita }) => {
             <p>Fecha: <span>{cita.fecha}</span></p>
             <p>Hora: <span>{cita.hora}</span></p>
             <p>Sintomas: <span>{cita.sintomas}</span></p>
-            <button className="button elimnar u-full-width">Eliminar ×</button>
+            <button onClick={() => eliminarCita(cita)}  className="button elimnar u-full-width">Eliminar×</button>
         </div>
     </div>
   )
